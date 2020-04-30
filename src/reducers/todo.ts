@@ -1,4 +1,4 @@
-import {ADD_TODOS, GET_TODOS, UPDATE_TODO, ADD_TODO} from 'constants/todo';
+import {ADD_TODOS, GET_TODOS, UPDATE_TODO, ADD_TODO} from 'constants/actions';
 import {UiStates, INIT, LOADING, SUCCESS} from 'constants/uiStates';
 
 export interface TodoState {

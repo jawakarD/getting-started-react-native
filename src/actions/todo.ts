@@ -1,4 +1,4 @@
-import {GET_TODOS, UPDATE_TODO, STORE_TODO} from 'constants/todo';
+import {GET_TODOS, UPDATE_TODO, STORE_TODO} from 'constants/actions';
 import {TodoState} from 'reducers/todo';
 
 export const getTodos = () => {
