@@ -3,7 +3,7 @@ import {
   DECREASE_COUNTER,
   INCREASE_AMOUNT,
   INCREASE_ASYNC,
-} from '../constants/counter';
+} from '../constants/actions';
 
 export const increment = () => {
   return {

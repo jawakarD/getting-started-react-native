@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+<<<<<<< HEAD
 import {
   ScrollView,
   ActivityIndicator,
@@ -6,13 +7,20 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
+=======
+import {ScrollView, ActivityIndicator, View} from 'react-native';
+>>>>>>> Use loding indicator
 import styles from './style';
 import {useDispatch, useSelector} from 'react-redux';
 import {TodosState, TodoState} from 'reducers/todo';
 import {getTodos, updateTodo} from 'actions/todo';
 import TodoRow from './TodoRow';
+<<<<<<< HEAD
 import {TodoProps} from './types';
 import {LOADING} from 'constants/uiStates';
+=======
+import {INIT, LOADING} from 'constants/uiStates';
+>>>>>>> Use loding indicator
 
 const Todo = ({navigation}: TodoProps) => {
   const disptach = useDispatch();

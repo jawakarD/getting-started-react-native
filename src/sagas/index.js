@@ -1,6 +1,12 @@
 import {takeLatest, call, put, all} from 'redux-saga/effects';
-import {INCREASE_ASYNC, INCREASE_AMOUNT} from '../constants/counter';
-import {GET_TODOS, ADD_TODOS, STORE_TODO, ADD_TODO} from 'constants/todo';
+import {
+  INCREASE_ASYNC,
+  INCREASE_AMOUNT,
+  GET_TODOS,
+  ADD_TODOS,
+  STORE_TODO,
+  ADD_TODO,
+} from 'constants/actions';
 import AsyncStorage from '@react-native-community/async-storage';
 
 const mergeAndSetTodo = (todosString) =>
