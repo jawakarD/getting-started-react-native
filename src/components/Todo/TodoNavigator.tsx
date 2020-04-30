@@ -3,7 +3,12 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Todo from './Todo';
 import {Image} from 'react-native';
 
-const Stack = createStackNavigator();
+export type TodoStackParamsList = {
+  Todo: undefined;
+};
+
+const Stack = createStackNavigator<TodoStackParamsList>();
+
 const LogoTitle = () => (
   <Image
     source={{

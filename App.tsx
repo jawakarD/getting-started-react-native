@@ -28,8 +28,15 @@ import AddTodo from 'components/Todo/AddTodo';
 const store = configureStore();
 sagaMiddleWare.run(rootSaga);
 
+export type ModalStackParamsList = {
+  Main: undefined;
+  AddTodo: {
+    nextId: number;
+  };
+};
+
 const Tab = createBottomTabNavigator();
-const ModalStack = createStackNavigator();
+const ModalStack = createStackNavigator<ModalStackParamsList>();
 
 const App = () => {
   useEffect(() => {
@@ -42,7 +49,7 @@ const App = () => {
       <Provider store={store}>
         <NavigationContainer>
           <ModalStack.Navigator mode="modal">
-            <ModalStack.Screen name="main" options={{headerShown: false}}>
+            <ModalStack.Screen name="Main" options={{headerShown: false}}>
               {() => (
                 <Tab.Navigator
                   initialRouteName="Todo"

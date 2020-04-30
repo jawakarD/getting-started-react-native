@@ -23,7 +23,7 @@ const TodoRow = ({
     </View>
     <View style={styles.title}>
       <TouchableOpacity onPress={() => toggleTodo(todo)}>
-        <Text style={styles.text}>{todo.title}</Text>
+        <Text style={styles.titleText}>{todo.title}</Text>
       </TouchableOpacity>
     </View>
   </View>
