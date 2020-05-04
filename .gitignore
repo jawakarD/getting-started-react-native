@@ -28,6 +28,9 @@ build/
 .gradle
 local.properties
 *.iml
+*.jar
+!android/gradle/wrapper/gradle-wrapper.jar
+
 
 # Visual Studio Code
 #
