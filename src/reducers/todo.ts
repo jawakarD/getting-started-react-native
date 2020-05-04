@@ -1,5 +1,6 @@
 import {ADD_TODOS, GET_TODOS, UPDATE_TODO, ADD_TODO} from 'constants/actions';
-import {UiStates, INIT, LOADING, SUCCESS} from 'constants/uiStates';
+import {INIT, LOADING, SUCCESS} from 'constants/uiStates';
+import {UiStates} from 'constants/types';
 
 export interface TodoState {
   userId: number;

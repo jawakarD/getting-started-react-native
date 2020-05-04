@@ -9,8 +9,7 @@ import {
 } from 'constants/actions';
 import AsyncStorage from '@react-native-community/async-storage';
 
-const mergeAndSetTodo = (todosString) =>
-  AsyncStorage.setItem('@todos', todosString);
+const setTodo = (todosString) => AsyncStorage.setItem('@todos', todosString);
 
 const addTodo = (todosString) => AsyncStorage.setItem('@todos', todosString);
 
@@ -58,7 +57,7 @@ function* storeTodo(action) {
         todos: [...parsedTodos.todos, action.todo],
       });
 
-      yield call(mergeAndSetTodo, todosString);
+      yield call(setTodo, todosString);
     } else {
       const todosString = JSON.stringify({
         todos: [action.todo],
