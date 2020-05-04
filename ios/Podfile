@@ -83,6 +83,8 @@ target 'Ilanjiragukal' do
 
   pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
 
+  pod 'appcenter-core', :path => '../node_modules/appcenter'
+
   target 'IlanjiragukalTests' do
     inherit! :complete
     # Pods for testing
