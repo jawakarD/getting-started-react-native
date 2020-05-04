@@ -36,13 +36,13 @@ const AddTodo = ({navigation, route}: AddTodoProps) => {
         value={todo}
       />
       <View>
-        <TouchableOpacity onPress={() => addTodo()} style={styles.submitButton}>
+        <TouchableOpacity onPress={addTodo} style={styles.submitButton}>
           <Text style={[styles.text, styles.titleText]}>Submit todo</Text>
         </TouchableOpacity>
       </View>
       <View>
         <TouchableOpacity
-          onPress={() => navigation.goBack()}
+          onPress={navigation.goBack}
           style={styles.submitButton}>
           <Text style={[styles.text, styles.titleText]}>Cancel</Text>
         </TouchableOpacity>
