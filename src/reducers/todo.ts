@@ -1,53 +1,65 @@
-import {ADD_TODOS, GET_TODOS, UPDATE_TODO, ADD_TODO} from 'constants/actions';
-import {INIT, LOADING, SUCCESS} from 'constants/uiStates';
-import {UiStates} from 'constants/types';
+import {TITLE} from 'constants/todoScreens';
+import {TodoState} from 'reducers/todos';
+import {TodoScreens} from 'constants/types';
+import {
+  ADD_TITLE,
+  ADD_NOTES,
+  ADD_REMINDER,
+  CHANGE_SCREEN,
+} from 'constants/actions';
 
-export interface TodoState {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
+interface State extends TodoState {
+  screen: TodoScreens;
+  error: {
+    title?: string;
+    notes?: string;
+    reminder?: string;
+  };
 }
 
-export interface TodosState {
-  asyncState: UiStates;
-  todos: TodoState[];
-}
-
-const initialState: TodosState = {
-  asyncState: INIT,
-  todos: [],
+const initState: State = {
+  id: 0,
+  title: '',
+  completed: false,
+  notes: '',
+  reminder: 'string',
+  screen: TITLE,
+  error: {
+    title: '',
+    notes: '',
+    reminder: '',
+  },
 };
 
-const todoReducer = (state = initialState, action: any) => {
-  switch (action.type) {
-    case ADD_TODOS:
-      return {
-        ...state,
-        todos: [...state.todos, ...action.todos],
-        asyncState: SUCCESS,
-      };
-
-    case GET_TODOS:
-      return {...state, asyncState: LOADING};
-
-    case UPDATE_TODO:
-      return {
-        ...state,
-        todos: state.todos.map((todo) =>
-          action.todo.id === todo.id ? action.todo : todo,
-        ),
-      };
-
-    case ADD_TODO:
-      return {
-        ...state,
-        todos: [...state.todos, action.todo],
-      };
-
-    default:
-      return state;
+const validateText = (text: string, state: State, field: string) => {
+  if (text) {
+    return {
+      ...state,
+      [field]: text,
+    };
+  } else {
+    return {
+      ...state,
+      error: {
+        ...state.error,
+        [field]: `Fill the ${field}`,
+      },
+    };
   }
 };
 
-export default todoReducer;
+export const todoreducer = (state: State = initState, action: any) => {
+  switch (action.type) {
+    case ADD_TITLE:
+      return validateText(action.title, state, 'title');
+    case ADD_NOTES:
+      return validateText(action.notes, state, 'notes');
+    case ADD_REMINDER:
+      return validateText(action.reminder, state, 'reminder');
+    case CHANGE_SCREEN:
+      return {
+        ...state,
+        screen: action.screen,
+      };
+  }
+};

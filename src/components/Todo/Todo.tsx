@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import styles from './style';
 import {useDispatch, useSelector} from 'react-redux';
-import {TodosState, TodoState} from 'reducers/todo';
+import {TodosState, TodoState} from 'reducers/todos';
 import {getTodos, updateTodo} from 'actions/todo';
 import TodoRow from './TodoRow';
 import {TodoProps} from './types';

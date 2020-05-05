@@ -19,9 +19,10 @@ const AddTodo = ({navigation, route}: AddTodoProps) => {
     dispatch(
       storeTodo({
         id: route.params.nextId,
-        userId: route.params.nextId,
         title: todo,
         completed: false,
+        notes: '',
+        reminder: '',
       }),
     );
     navigation.goBack();

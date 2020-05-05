@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
-import {TodoState} from 'reducers/todo';
+import {TodoState} from 'reducers/todos';
 import CheckBox from '@react-native-community/checkbox';
 import styles from './style';
 
