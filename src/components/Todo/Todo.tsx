@@ -9,14 +9,14 @@ import {
 import styles from './style';
 import {useDispatch, useSelector} from 'react-redux';
 import {TodosState, TodoState} from 'reducers/todos';
-import {getTodos, updateTodo} from 'actions/todo';
+import {getTodos, updateTodo} from 'actions/todos';
 import TodoRow from './TodoRow';
 import {TodoProps} from './types';
 import {LOADING} from 'constants/uiStates';
 
 const Todo = ({navigation}: TodoProps) => {
   const disptach = useDispatch();
-  const todos = useSelector((state: {todo: TodosState}) => state.todo.todos);
+  const todos = useSelector((state: {todos: TodosState}) => state.todos.todos);
   const asyncState = useSelector(
     (state: {todo: TodosState}) => state.todo.asyncState,
   );

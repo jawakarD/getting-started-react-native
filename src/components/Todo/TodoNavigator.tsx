@@ -1,12 +1,18 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import Todo from './Todo';
+import AddTodo from './AddTodo';
 import {Image, View, Text} from 'react-native';
 import {useNetInfo} from '@react-native-community/netinfo';
 import styles from './style';
+import AddNotes from './AddNotes';
 
 export type TodoStackParamsList = {
   Todo: undefined;
+  AddTodo: {
+    nextId: number;
+  };
+  AddNotes: undefined;
 };
 
 const Stack = createStackNavigator<TodoStackParamsList>();
@@ -45,6 +51,20 @@ const TodoNavigator = () => (
     <Stack.Screen
       name="Todo"
       component={Todo}
+      options={{
+        headerTitle: () => <LogoTitle />,
+      }}
+    />
+    <Stack.Screen
+      name="AddTodo"
+      component={AddTodo}
+      options={{
+        headerTitle: () => <LogoTitle />,
+      }}
+    />
+    <Stack.Screen
+      name="AddNotes"
+      component={AddNotes}
       options={{
         headerTitle: () => <LogoTitle />,
       }}

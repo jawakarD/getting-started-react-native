@@ -20,7 +20,7 @@ const initialState: TodosState = {
   todos: [],
 };
 
-const todoReducer = (state = initialState, action: any) => {
+const todosReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case ADD_TODOS:
       return {
@@ -51,4 +51,4 @@ const todoReducer = (state = initialState, action: any) => {
   }
 };
 
-export default todoReducer;
+export default todosReducer;

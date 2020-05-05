@@ -8,16 +8,16 @@ import {
   CHANGE_SCREEN,
 } from 'constants/actions';
 
-interface State extends TodoState {
+export interface Todo extends TodoState {
   screen: TodoScreens;
   error: {
-    title?: string;
-    notes?: string;
-    reminder?: string;
+    title?: string | boolean;
+    notes?: string | boolean;
+    reminder?: string | boolean;
   };
 }
 
-const initState: State = {
+const initState: Todo = {
   id: 0,
   title: '',
   completed: false,
@@ -31,15 +31,20 @@ const initState: State = {
   },
 };
 
-const validateText = (text: string, state: State, field: string) => {
+const validateText = (text: string, state: Todo, field: string): Todo => {
   if (text) {
     return {
       ...state,
       [field]: text,
+      error: {
+        ...state.error,
+        [field]: false,
+      },
     };
   } else {
     return {
       ...state,
+      [field]: text,
       error: {
         ...state.error,
         [field]: `Fill the ${field}`,
@@ -48,7 +53,7 @@ const validateText = (text: string, state: State, field: string) => {
   }
 };
 
-export const todoreducer = (state: State = initState, action: any) => {
+const todoReducer = (state: Todo = initState, action: any) => {
   switch (action.type) {
     case ADD_TITLE:
       return validateText(action.title, state, 'title');
@@ -61,5 +66,9 @@ export const todoreducer = (state: State = initState, action: any) => {
         ...state,
         screen: action.screen,
       };
+    default:
+      return state;
   }
 };
+
+export default todoReducer;
