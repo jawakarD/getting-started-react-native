@@ -1,14 +1,53 @@
-import React from 'react';
-import {View, Text, Button} from 'react-native';
-import {StackHeaderProps} from '@react-navigation/stack';
-import style from './style';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
+import styles from './style';
+import {useDispatch} from 'react-redux';
+import {storeTodo} from 'actions/todo';
+import {AddTodoProps} from './types';
 
-const AddTodo = ({navigation}: StackHeaderProps) => {
+const AddTodo = ({navigation, route}: AddTodoProps) => {
+  const [todo, setTodo] = useState('');
+  const dispatch = useDispatch();
+
+  const addTodo = () => {
+    dispatch(
+      storeTodo({
+        id: route.params.nextId,
+        userId: route.params.nextId,
+        title: todo,
+        completed: false,
+      }),
+    );
+    navigation.goBack();
+  };
+
   return (
-    <View style={style.view}>
-      <Text style={style.text}>Let's add a todo!</Text>
-      <Button onPress={() => navigation.goBack()} title="Dismiss" />
-    </View>
+    <ScrollView style={styles.addTodoModal}>
+      <TextInput
+        style={[styles.todoInput, styles.text]}
+        onChangeText={(text) => setTodo(text)}
+        placeholder="Add todo"
+        value={todo}
+      />
+      <View>
+        <TouchableOpacity onPress={addTodo} style={styles.submitButton}>
+          <Text style={[styles.text, styles.titleText]}>Submit todo</Text>
+        </TouchableOpacity>
+      </View>
+      <View>
+        <TouchableOpacity
+          onPress={navigation.goBack}
+          style={styles.submitButton}>
+          <Text style={[styles.text, styles.titleText]}>Cancel</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 

@@ -2,7 +2,7 @@ import {
   INCREASE_COUNTER,
   DECREASE_COUNTER,
   INCREASE_AMOUNT,
-} from '../constants/counter';
+} from 'constants/actions';
 
 const initialState = {
   count: 0,

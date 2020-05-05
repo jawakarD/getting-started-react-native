@@ -1,5 +1,6 @@
-import {ADD_TODOS, GET_TODOS, UPDATE_TODO} from 'constants/todo';
-import {UiStates, INIT, LOADING, SUCCESS} from 'constants/uiStates';
+import {ADD_TODOS, GET_TODOS, UPDATE_TODO, ADD_TODO} from 'constants/actions';
+import {INIT, LOADING, SUCCESS} from 'constants/uiStates';
+import {UiStates} from 'constants/types';
 
 export interface TodoState {
   userId: number;
@@ -36,6 +37,12 @@ const todoReducer = (state = initialState, action: any) => {
         todos: state.todos.map((todo) =>
           action.todo.id === todo.id ? action.todo : todo,
         ),
+      };
+
+    case ADD_TODO:
+      return {
+        ...state,
+        todos: [...state.todos, action.todo],
       };
 
     default:
