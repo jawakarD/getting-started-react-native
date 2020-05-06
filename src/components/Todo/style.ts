@@ -58,4 +58,16 @@ export default StyleSheet.create({
     marginTop: 8,
     borderRadius: 10,
   },
+  logoTitle: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  notConnected: {
+    color: 'red',
+    backgroundColor: 'white',
+    marginLeft: 10,
+    padding: 5,
+    borderRadius: 10,
+  },
 });
